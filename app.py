@@ -15,7 +15,6 @@ margin-bottom: 2.5rem">{}</div>"""
 skill_pattern_path = PROJECT_DIR + "data/skill_patterns.jsonl"
 file = PROJECT_DIR + '/CV/Philippe_Nguyen_CV_08_21.pdf'
 nlp = spacy.load('en_core_web_sm')
-pdfreader = "textract"
 
 st.title('CV analysis')
 
