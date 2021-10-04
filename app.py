@@ -58,7 +58,6 @@ st.write("Get some inspiration [here](https://www.ehlgroup.com/fr/a-propos/emplo
 user_input = st.text_area("Copy paste the job offer here")
 
 if st.button("Run skill extraction from text input", key="step2"):
-    print(user_input)
     user_input_skills, user_input_skills_set = get_skills(user_input)
     st.write(user_input_skills, unsafe_allow_html=True)
 
@@ -68,3 +67,16 @@ if st.button("Run skill extraction from text input", key="step2"):
     intersection = HTML_WRAPPER.format(user_input_skills_set.intersection(skills_set))
     st.subheader("Common skills set:")
     st.write(intersection, unsafe_allow_html=True)
+
+st.subheader("Technical details")
+st.write(
+    '''
+    This skill extractor tools based on spacy Rule-based matching is experimental and should NOT be used in real-life.
+
+    - web app: Streamlit
+    - server configuration: NixOS/nginx
+    - PDF file reader: pdfminer
+    - NLP: spaCy
+    
+    '''
+)
