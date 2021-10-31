@@ -1,23 +1,6 @@
-with import <nixpkgs> {
-  overlays =  [
-    (self: super:
-    let
-      lib = super.lib;
-    in rec {
-      python38 = super.python38.override {
-        packageOverrides = self: super: {
-          beautifulsoup4 = super.beautifulsoup4.overrideAttrs (old: {
-            propagatedBuildInputs = lib.remove super.lxml old.propagatedBuildInputs;
-          });
-        };
-      };
-      python38Packages = python38.pkgs;
-    })
-  ];
-};
+with import <unstable> {};
 
-(
-  python38.withPackages (
+(python38.withPackages (
     ps: with ps; [
       numpy
       scikitlearn
@@ -25,7 +8,26 @@ with import <nixpkgs> {
       jupyter
       spacy
       streamlit
+      pytorch
+      ruamel-yaml
+      scikitlearn
+      scipy
+      sentencepiece
+      tables
+      tensorflow # WithCuda
+      # transformers
+      wheel
+      (callPackage ./nixpkgs/transformers.nix {})
+      (callPackage ./nixpkgs/watermark.nix {})
+      (callPackage ./nixpkgs/ipytest.nix {})
+      (callPackage ./nixpkgs/yamlmagic.nix {})
+      (callPackage ./nixpkgs/en_core_web_sm.nix {})
+      (callPackage ./nixpkgs/streamlit.nix {})
       seaborn
+      jsonlines
+      pypdf2
+      pdfminer
+      nltk
     ]
   )
 ).env
