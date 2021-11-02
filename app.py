@@ -54,7 +54,7 @@ if uploaded_file is not None:
 # text = extract_text_from_pdf(file, pdfreader)
 
 st.subheader("STEP 2. Skills extraction from job offer:")
-st.write("Get some inspiration [here](https://www.ehlgroup.com/fr/a-propos/emplois/data-scientist)")
+# st.write("Get some inspiration [here](https://www.ehlgroup.com/fr/a-propos/emplois/data-scientist)")
 user_input = st.text_area("Copy paste the job offer here")
 
 if st.button("Run skill extraction from text input", key="step2"):
